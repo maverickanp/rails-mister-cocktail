@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @cocktail.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @cocktail.name %></td>
+      <td><%= link_to 'Edit', edit_cocktail_path(@cocktail) %></td>
+      <td>
+        <%= link_to 'Destroy', @cocktail, method: :delete, data: { confirm: 'Are
+        you sure?' } %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'Cocktails List', cocktails_path %>
