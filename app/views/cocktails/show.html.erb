@@ -2,26 +2,45 @@
 
 <h1><%= @cocktail.name %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <tr>
-      <td><%= @cocktail.name %></td>
-      <td><%= link_to 'Edit', edit_cocktail_path(@cocktail) %></td>
-      <td>
-        <%= link_to 'Destroy', @cocktail, method: :delete, data: { confirm: 'Are
-        you sure?' } %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      <tbody>
+        <tr>
+          <td><%= @cocktail.name %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--division-->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Ingredients</th>
+          <th>Descriptions</th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <% @cocktail.doses.each do |dose| %>
+        <tr>
+          <td>
+            <%= "#{dose.ingredient.name} ->" %>
+          </td>
+          <td><%= "#{dose.description}" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%= link_to 'Add Dose', new_cocktail_dose_path(@cocktail) %>
 <br />
-
 <%= link_to 'Cocktails List', cocktails_path %>
